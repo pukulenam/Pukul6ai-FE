@@ -10,15 +10,12 @@ import ProtectingRouteAdmin from './routes/protectingRouteAdmin';
 import SessionAlert from './components/SessionAlert';
 
 function App() {
-  const session = sessionStorage.getItem('token');
+  
   return (
     <div className="App">
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <BrowserRouter>
-            {!session ? (
-              <SessionAlert />
-            ) : null}
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />

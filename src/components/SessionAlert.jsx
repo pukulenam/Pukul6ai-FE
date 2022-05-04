@@ -9,9 +9,9 @@ function SessionAlert() {
     const session = sessionStorage.getItem('token');
     const handleLogOut = () => {
         dispatch(REMOVE_USER());
-        navigate('/login');
+        navigate('/');
     }
-    let match = useMatch('/login');
+    let match = useMatch('/');
     return (
         <div>
             {match?.pathname !== '/login' && !session ?
