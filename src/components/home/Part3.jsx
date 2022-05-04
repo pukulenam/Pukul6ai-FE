@@ -1,6 +1,6 @@
 import React from 'react';
-import bg from '../asset/counter/counter-banner.jpg';
-import cou from '../asset/counter/counter2.png';
+import bg from '../../asset/counter/counter-banner.jpg';
+import cou from '../../asset/counter/counter2.png';
 
 function Part3() {
     return (

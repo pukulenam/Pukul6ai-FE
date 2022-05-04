@@ -15,11 +15,11 @@ function SessionAlert() {
     return (
         <div>
             {match?.pathname !== '/login' && !session ?
-                <div class="modal modal-open modal-middle">
-                    <div class="modal-box text-left bg-indigo-800 text-white">
-                        <h3 class="font-bold text-lg">Sesi anda telah berakhir!</h3>
-                        <p class="py-4">Silakan melakukan Login kembali</p>
-                        <div class="modal-action">
+                <div className="modal modal-open modal-middle">
+                    <div className="modal-box text-left bg-indigo-800 text-white">
+                        <h3 className="font-bold text-lg">Sesi anda telah berakhir!</h3>
+                        <p className="py-4">Silakan melakukan Login kembali</p>
+                        <div className="modal-action">
                             <button onClick={handleLogOut} className="btn text-white">Logout</button>
                         </div>
                     </div>

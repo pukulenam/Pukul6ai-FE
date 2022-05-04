@@ -3,12 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Footer from '../components/Footer';
 import LeftBar from '../components/LeftBar';
-import MidBarDash from '../components/MidBarDash';
-import ProjectTable from '../components/ProjectTable';
+import MidBarProj from '../components/MidBarProj';
 import RightBar from '../components/RightBar';
 import SessionAlert from '../components/SessionAlert';
 
-function Dashboard() {
+function Project() {
     const session = sessionStorage.getItem('token');
     const userid = useSelector((state) => state.data.datas.id);
     const user_role = useSelector((state) => state.data.datas.role);
@@ -60,7 +59,7 @@ function Dashboard() {
                                 <LeftBar user={user} />
                             </div>
                             <div className='col-span-1 lg:col-span-7 bg-slate-100'>
-                                <MidBarDash project={project} />
+                                <MidBarProj project={project} />
                             </div>
                             <div className='col-span-1 lg:col-span-2 text-left pl-4 pr-3 border-l-2 border-black lg:bg-slate-700'>
                                 <RightBar user={user} />
@@ -76,7 +75,7 @@ function Dashboard() {
                             <LeftBar user={user} />
                         </div>
                         <div className='col-span-1 lg:col-span-7 bg-slate-100'>
-                            <MidBarDash project={project} />
+                            <MidBarProj project={project} />
                         </div>
                         <div className='col-span-1 lg:col-span-2 text-left pl-4 pr-3 border-l-2 border-black lg:bg-slate-700'>
                             <RightBar user={user} />
@@ -90,4 +89,4 @@ function Dashboard() {
     )
 }
 
-export default Dashboard;
+export default Project;

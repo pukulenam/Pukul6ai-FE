@@ -1,8 +1,8 @@
 import React from 'react';
-import Card from './Card';
-import img1 from '../asset/home/consultency.png';
-import img2 from '../asset/home/busisness_grow.png';
-import img3 from '../asset/home/support-logo.png';
+import Card from '../Card';
+import img1 from '../../asset/home/consultency.png';
+import img2 from '../../asset/home/busisness_grow.png';
+import img3 from '../../asset/home/support-logo.png';
 
 function Part1() {
 

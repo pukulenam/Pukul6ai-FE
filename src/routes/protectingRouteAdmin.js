@@ -4,11 +4,11 @@ import { useSelector } from 'react-redux';
 
 function ProtectingRouteAdmin(props) {
     const navigate = useNavigate();
-    const admin = useSelector((state) => state.data.datas.user);
+    const admin = useSelector((state) => state.data.datas);
 
     useEffect(() => {
         if (admin?.role !== "admin") {
-            navigate("/login");
+            navigate("/dashboard");
         }
     }, [admin.role])
     return props.children;

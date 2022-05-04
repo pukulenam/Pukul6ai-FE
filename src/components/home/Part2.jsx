@@ -1,5 +1,5 @@
 import React from 'react';
-import about from '../asset/about/about-part.jpg';
+import about from '../../asset/about/about-part.jpg';
 
 function Part2() {
     return (

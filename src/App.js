@@ -3,11 +3,12 @@ import './App.css';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import Project from './pages/Project';
+import AddProject from './pages/AddProject';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistor, store } from './redux/store';
 import ProtectingRouteAdmin from './routes/protectingRouteAdmin';
-import SessionAlert from './components/SessionAlert';
 
 function App() {
   
@@ -20,6 +21,12 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/project" element={<Project />} />
+              <Route path="/project/add" element={
+                <ProtectingRouteAdmin>
+                  <AddProject />
+                </ProtectingRouteAdmin>
+              } />
 
               <Route path="*" element={<div>404 Page Not Found</div>} />
             </Routes>

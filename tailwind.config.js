@@ -107,6 +107,14 @@ module.exports = {
           display: 'none',
           position: 'absolute'
         }
+      },
+      pulse: {
+        '0%, 100%': {
+          opacity: 1
+        },
+        '50%': {
+          opacity: .5
+        }
       }
     },
     animation: {
@@ -115,8 +123,12 @@ module.exports = {
       'fadein': 'fade 0.5s ease-in-out',
       'slideinleft': 'slidein 1s ease-in-out',
       'slideoutleft': 'slideout 1s ease-out',
-      'spin' : 'spining 1s linear infinite'
+      'spin' : 'spining 1s linear infinite',
+      'pulse' : 'pulse 0.7s cubic-bezier(0.4, 0, 0.6, 1) infinite'
     },
   },
   plugins: [require("daisyui")],
+  daisyui: {
+    
+  }
 }
