@@ -11,13 +11,13 @@ function LeftBar() {
                     <a className='font-bold text-2xl'>PukulEnam AI</a>
                 </div>
                 <div className='border border-black mt-7'></div>
-                <div className='flex bg-orange-300 font-semibold rounded-lg border mt-8 p-3'>
+                <div className='flex bg-gray-400 hover:bg-orange-300 font-semibold rounded-lg border mt-8 p-3 cursor-pointer'>
                     Dashboard
                 </div>
-                <div className='flex bg-orange-300 font-semibold rounded-lg border mt-4 p-3'>
+                <div className='flex bg-gray-400 hover:bg-orange-300 font-semibold rounded-lg border p-3 cursor-pointer'>
                     Projects
                 </div>
-                <div className='flex bg-orange-300 font-semibold rounded-lg border mt-4 p-3'>
+                <div className='flex bg-gray-400 hover:bg-orange-300 font-semibold rounded-lg border p-3 cursor-pointer'>
                     Schedules
                 </div>
             </div>
