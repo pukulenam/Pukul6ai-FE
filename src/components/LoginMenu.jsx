@@ -15,10 +15,8 @@ function LoginMenu({choose}) {
 
     function submitHandler() {
         setLoading(true);
-        console.log(loading);
         axios.post("http://localhost:8000/api/login", details)
         .then(res => {
-            console.log(res.data.token);
             dispatch(ADD_USER(res.data.user));
             sessionStorage.setItem("token", res.data.token );
             setLoading(false);
@@ -29,16 +27,11 @@ function LoginMenu({choose}) {
             console.log('error not auth');
             setLoading(false);
         })
-        console.log(loading);
     }
 
     return (
         <React.Fragment>
             <div className='relative p-4 lg:py-8 lg:px-28 rounded flex-col flex items-center'>
-                {/* <svg xmlns="http://www.w3.org/2000/svg" width="auto" height="48" fill="currentColor" className="mb-24 bi-arrow-left hover:bg-red-300" viewBox="0 0 16 16" onClick={() => choose('none')}>
-                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-                </svg>
-                 */}
 
                 {loading ? (
                     <div className='absolute flex flex-col items-center bg-blue-200 border-blue-500 border-2 rounded-lg p-2 w-3/4 mt-10'>
@@ -69,13 +62,14 @@ function LoginMenu({choose}) {
                 <a className='text-3xl flex mb-28'>Welcome to PukulEnam AI</a>
                 <a className='text-xl mb-4'>Login</a>
                 <div className='border mb-6 border-black bg-black w-full'></div>
+
                 <label className='text-xl'>Username</label>
                 <input className='border-blue-900 border-2 w-2/3 rounded p-2 focus:bg-slate-100' type='text' name='username' id='username' onChange={e => setDetails({...details, username: e.target.value})} value={details.username} />
 
                 <label className='text-xl'>Password</label>
                 <input className='border-blue-900 border-2 w-2/3 rounded p-2 focus:bg-slate-100' type='password' name='password' id='password' onChange={e => setDetails({...details, password: e.target.value})} value={details.password} />
 
-                <button className='flex mt-6 bg-blue-600 opacity-100 hover:bg-orange-700 text-white font-bold py-2 px-9 rounded mb-2' onClick={submitHandler}>
+                <button className='flex mt-6 bg-blue-600 opacity-100 hover:bg-orange-700 text-white font-bold py-2 px-9 rounded mb-2' onClick={submitHandler} >
                     Login
                 </button>
 

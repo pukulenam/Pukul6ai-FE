@@ -1,5 +1,5 @@
 import React from 'react';
-import bg from '../asset/footer/map.jpg';
+import bg from '../../asset/footer/map.jpg';
 
 function Part5() {
     return (

@@ -1,21 +1,20 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import Footer from '../components/Footer';
-import LeftBar from '../components/LeftBar';
-import MidBarDash from '../components/MidBarDash';
-import ProjectTable from '../components/ProjectTable';
-import RightBar from '../components/RightBar';
-import SessionAlert from '../components/SessionAlert';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import AddProjMid from "../components/AddProjMid";
+import Footer from "../components/Footer";
+import LeftBar from "../components/LeftBar";
+import RightBar from "../components/RightBar";
+import SessionAlert from "../components/SessionAlert";
 
-function Dashboard() {
+function AddProject() {
     const session = sessionStorage.getItem('token');
     const userid = useSelector((state) => state.data.datas.id);
     const user_role = useSelector((state) => state.data.datas.role);
 
     const [user, setUser] = useState();
-    const [project, setProject] = useState();
     const [loading, setLoading] = useState(true);
+    const [users, setUsers] = useState([]);
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/user/${userid}`, {headers: {"Authorization" : `Bearer ${sessionStorage.getItem('token')}`}})
@@ -26,18 +25,17 @@ function Dashboard() {
             console.log(err);
             sessionStorage.clear();
         });
-        
-        axios.get(`http://localhost:8000/api/project/${user_role}/${userid}`, {headers: {"Authorization" : `Bearer ${sessionStorage.getItem('token')}`}})
+
+        axios.get('http://localhost:8000/api/user', {headers: {"Authorization" : `Bearer ${sessionStorage.getItem('token')}`}})
         .then(res => {
-            setProject(res.data);
+            setUsers(res.data);
             setLoading(false);
         })
         .catch(err => {
             console.log(err);
             sessionStorage.clear();
         });
-
-    }, [])
+    }, []);
 
     return (
         !session ? (
@@ -60,7 +58,7 @@ function Dashboard() {
                                 <LeftBar user={user} />
                             </div>
                             <div className='col-span-1 lg:col-span-7 bg-slate-100'>
-                                <MidBarDash project={project} />
+                                <AddProjMid users={null} />
                             </div>
                             <div className='col-span-1 lg:col-span-2 text-left pl-4 pr-3 border-l-2 border-black lg:bg-slate-700'>
                                 <RightBar user={user} />
@@ -76,7 +74,7 @@ function Dashboard() {
                             <LeftBar user={user} />
                         </div>
                         <div className='col-span-1 lg:col-span-7 bg-slate-100'>
-                            <MidBarDash project={project} />
+                            <AddProjMid users={users} />
                         </div>
                         <div className='col-span-1 lg:col-span-2 text-left pl-4 pr-3 border-l-2 border-black lg:bg-slate-700'>
                             <RightBar user={user} />
@@ -86,8 +84,7 @@ function Dashboard() {
                 </div>
             )
         )
-        
     )
 }
 
-export default Dashboard;
+export default AddProject;

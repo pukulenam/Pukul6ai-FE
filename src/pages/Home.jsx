@@ -1,11 +1,11 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
-import Welcome from '../components/Welcome';
-import Part1 from '../components/Part1';
-import Part2 from '../components/Part2';
-import Part3 from '../components/Part3';
-import Part4 from '../components/Part4';
-import Part5 from '../components/Part5';
+import Navbar from '../components/home/Navbar';
+import Welcome from '../components/home/Welcome';
+import Part1 from '../components/home/Part1';
+import Part2 from '../components/home/Part2';
+import Part3 from '../components/home/Part3';
+import Part4 from '../components/home/Part4';
+import Part5 from '../components/home/Part5';
 import Footer from '../components/Footer';
 
 function Home() {

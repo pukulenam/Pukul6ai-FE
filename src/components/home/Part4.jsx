@@ -4,7 +4,7 @@ import { Autoplay, Navigation } from 'swiper'
 import "swiper/css";
 import "swiper/css/navigation";
 
-import Team from './Team';
+import Team from './../Team';
 import axios from 'axios';
 
 function Part4() {

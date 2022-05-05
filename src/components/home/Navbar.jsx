@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../asset/logo/pukulEnam.jpg';
+import logo from '../../asset/logo/pukulEnam.jpg';
 import { useNavigate, Link } from 'react-router-dom';
 
 function Navbar() {
