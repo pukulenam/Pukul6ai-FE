@@ -1,19 +1,23 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import AddProjMid from "../components/project/AddProjMid";
+import { useParams } from "react-router-dom";
+import EditProjMid from "../components/project/EditProjMid";
 import Footer from "../components/Footer";
 import LeftBar from "../components/LeftBar";
 import RightBar from "../components/RightBar";
 import SessionAlert from "../components/SessionAlert";
 
-function AddProject() {
+function EditProject() {
     const session = sessionStorage.getItem('token');
     const userid = useSelector((state) => state.data.datas.id);
+
+    const {id} = useParams();
 
     const [user, setUser] = useState();
     const [loading, setLoading] = useState(true);
     const [users, setUsers] = useState([]);
+    const [project, setProject] = useState({});
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/user/${userid}`, {headers: {"Authorization" : `Bearer ${sessionStorage.getItem('token')}`}})
@@ -28,12 +32,22 @@ function AddProject() {
         axios.get('http://localhost:8000/api/user', {headers: {"Authorization" : `Bearer ${sessionStorage.getItem('token')}`}})
         .then(res => {
             setUsers(res.data);
+        })
+        .catch(err => {
+            console.log(err);
+            sessionStorage.clear();
+        });
+
+        axios.get(`http://localhost:8000/api/project/${id}`, {headers: {"Authorization" : `Bearer ${sessionStorage.getItem('token')}`}})
+        .then(res => {
+            setProject(res.data);
             setLoading(false);
         })
         .catch(err => {
             console.log(err);
             sessionStorage.clear();
         });
+
     }, []);
 
     return (
@@ -57,7 +71,7 @@ function AddProject() {
                                 <LeftBar user={user} />
                             </div>
                             <div className='col-span-1 lg:col-span-7 bg-slate-100'>
-                                <AddProjMid users={null} />
+                                <EditProjMid users={null} project={null} />
                             </div>
                             <div className='col-span-1 lg:col-span-2 text-left pl-4 pr-3 border-l-2 border-black lg:bg-slate-700'>
                                 <RightBar user={user} />
@@ -73,7 +87,7 @@ function AddProject() {
                             <LeftBar user={user} />
                         </div>
                         <div className='col-span-1 lg:col-span-7 bg-slate-100'>
-                            <AddProjMid users={users} />
+                            <EditProjMid users={users} project={project} />
                         </div>
                         <div className='col-span-1 lg:col-span-2 text-left pl-4 pr-3 border-l-2 border-black lg:bg-slate-700'>
                             <RightBar user={user} />
@@ -86,4 +100,4 @@ function AddProject() {
     )
 }
 
-export default AddProject;
+export default EditProject;

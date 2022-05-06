@@ -18,9 +18,10 @@ function SignupMenu({choose}) {
         console.log(loading);
         axios.post("http://localhost:8000/api/register", details)
         .then(res => {
-            // console.log(res.data);
+            console.log(res.data);
+            console.log(res.data.token);
             dispatch(ADD_USER(res.data.user));
-            sessionStorage.setItem("token", res.data.token);
+            sessionStorage.setItem("token", res.data.token );
             setLoading(false);
             navigate('/dashboard');
         })
@@ -74,16 +75,16 @@ function SignupMenu({choose}) {
                 <div className='border mb-4 border-black bg-black w-full'></div>
 
                 <label className='text-xl'>Full Name</label>
-                <input className='border-blue-900 border-2 w-2/3 rounded p-2 focus:bg-slate-100' type='text' autoComplete='full_name' required name='full_name' id='full_name' onChange={e => setDetails({...details, full_name: e.target.value})} value={details.full_name} />
+                <input className='border-blue-900 border-2 w-2/3 rounded p-2 focus:bg-slate-100' type='text' placeholder='Full Name..' autoComplete='full_name' required name='full_name' id='full_name' onChange={e => setDetails({...details, full_name: e.target.value})} value={details.full_name} />
                 
                 <label className='text-xl'>Username</label>
-                <input className='border-blue-900 border-2 w-2/3 rounded p-2 focus:bg-slate-100' type='text' autoComplete='username' required name='username' id='username' onChange={e => setDetails({...details, username: e.target.value})} value={details.username} />
+                <input className='border-blue-900 border-2 w-2/3 rounded p-2 focus:bg-slate-100' type='text' placeholder='Username..' autoComplete='username' required name='username' id='username' onChange={e => setDetails({...details, username: e.target.value})} value={details.username} />
 
                 <label className='text-xl'>Email</label>
-                <input className='border-blue-900 border-2 w-2/3 rounded p-2 focus:bg-slate-100' type='email' autoComplete='email' required name='email' id='email' onChange={e => setDetails({...details, email: e.target.value})} value={details.email} />
+                <input className='border-blue-900 border-2 w-2/3 rounded p-2 focus:bg-slate-100' type='email' placeholder='Email..' autoComplete='email' required name='email' id='email' onChange={e => setDetails({...details, email: e.target.value})} value={details.email} />
 
                 <label className='text-xl'>Password</label>
-                <input className='border-blue-900 border-2 w-2/3 rounded p-2 focus:bg-slate-100' type='password' autoComplete='password' required name='password' id='password' onChange={e => setDetails({...details, password: e.target.value})} value={details.password} />
+                <input className='border-blue-900 border-2 w-2/3 rounded p-2 focus:bg-slate-100' type='password' placeholder='Password..' autoComplete='password' required name='password' id='password' onChange={e => setDetails({...details, password: e.target.value})} value={details.password} />
                 
                 {details.password !== "" && details.password.length < 6 ? (
                     <a className='text-red-500'>Password Must at least 6 Characters</a>
@@ -91,7 +92,7 @@ function SignupMenu({choose}) {
                 }
 
                 <label className='text-xl'>Password Confirmation</label>
-                <input className='border-blue-900 border-2 w-2/3 rounded p-2 focus:bg-slate-100' type='password' required name='password_confirm' id='password_confirm' onChange={e => setDetails({...details, password_confirmation: e.target.value})} value={details.password_confirmation} />
+                <input className='border-blue-900 border-2 w-2/3 rounded p-2 focus:bg-slate-100' type='password' placeholder='Confirm Password..' required name='password_confirm' id='password_confirm' onChange={e => setDetails({...details, password_confirmation: e.target.value})} value={details.password_confirmation} />
                 {details.password_confirmation !== "" && details.password !== details.password_confirmation ? (
                     <a className='text-red-500'>Password Did Not Match</a>
                 ) : details.password.length !== 0 && details.password_confirmation !== "" ? (

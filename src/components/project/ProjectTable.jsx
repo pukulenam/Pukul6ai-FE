@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import VChart from "./VChart";
 
 function ProjectTable({project, user_role}) {
@@ -99,16 +100,20 @@ function ProjectTable({project, user_role}) {
                             <td className='bg-orange-300'><VChart progress={item.progress}/></td>
                             {user_role === "admin" ? (
                                 <td className='bg-orange-300 text-center w-24'>
-                                    <button className='bg-yellow-400 p-1 lg:px-6 rounded border border-black shadow-lg'>edit</button>
+                                    <Link to={`/project/edit/${item.id}`}>
+                                        <button className='bg-yellow-400 p-1 lg:px-6 rounded border border-black shadow-lg hover:bg-red-500'>edit</button>
+                                    </Link>
                                 </td>
                             ) : null
                             }
                             <td className='bg-orange-300 text-center w-24'>
-                                <button className='bg-green-400 p-1 lg:px-6 rounded border border-black shadow-lg'>view</button>
+                                <Link to={`/project/view/${item.id}`}>
+                                    <button className='bg-green-400 p-1 lg:px-6 rounded border border-black shadow-lg hover:bg-blue-500'>view</button>
+                                </Link>
                             </td>
                             {user_role === "admin" ? (
                                 <td className='bg-orange-300 text-center w-20'>
-                                    <button className='bg-red-100 rounded py-2 px-1 border border-black' onClick={() => deleteHandler(item.id, item.name)}>
+                                    <button className='bg-red-100 rounded py-2 px-1 border border-black hover:bg-red-400' onClick={() => deleteHandler(item.id, item.name)}>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-trash3" viewBox="0 0 16 16">
                                             <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
                                         </svg>

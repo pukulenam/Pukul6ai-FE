@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Chart from './Chart';
-import ProjectTable from './ProjectTable';
+import ProjectTable from './project/ProjectTable';
 
 function MidBarDash({project}) {
 
@@ -11,7 +11,7 @@ function MidBarDash({project}) {
     return (
         <React.Fragment>
             {!project ? (
-                <div className='grid grid-cols-3 lg:grid-cols-12 lg:gap-4 m-4'>
+                <div className='grid grid-cols-3 lg:grid-cols-12 lg:gap-4 m-4 shadow p-1 rounded-lg'>
                     <div className='col-span-2 lg:col-span-3'>
                         <Chart complete={compProject} ongoing={allProject-compProject} />
                     </div>
@@ -25,7 +25,7 @@ function MidBarDash({project}) {
                     </div>
                 </div>
             ) : (
-                <div className='grid grid-cols-3 lg:grid-cols-12 lg:gap-4 m-4'>
+                <div className='grid grid-cols-3 lg:grid-cols-12 lg:gap-4 m-4 shadow p-1 rounded-lg'>
                     <div className='col-span-2 lg:col-span-3'>
                         <Chart complete={compProject} ongoing={allProject-compProject} />
                     </div>

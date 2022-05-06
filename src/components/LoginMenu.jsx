@@ -64,10 +64,10 @@ function LoginMenu({choose}) {
                 <div className='border mb-6 border-black bg-black w-full'></div>
 
                 <label className='text-xl'>Username</label>
-                <input className='border-blue-900 border-2 w-2/3 rounded p-2 focus:bg-slate-100' type='text' name='username' id='username' onChange={e => setDetails({...details, username: e.target.value})} value={details.username} />
+                <input className='border-blue-900 border-2 w-2/3 rounded p-2 focus:bg-slate-100' placeholder='Username..' type='text' name='username' id='username' onChange={e => setDetails({...details, username: e.target.value})} value={details.username} />
 
                 <label className='text-xl'>Password</label>
-                <input className='border-blue-900 border-2 w-2/3 rounded p-2 focus:bg-slate-100' type='password' name='password' id='password' onChange={e => setDetails({...details, password: e.target.value})} value={details.password} />
+                <input className='border-blue-900 border-2 w-2/3 rounded p-2 focus:bg-slate-100' placeholder='Password..' type='password' name='password' id='password' onChange={e => setDetails({...details, password: e.target.value})} value={details.password} />
 
                 <button className='flex mt-6 bg-blue-600 opacity-100 hover:bg-orange-700 text-white font-bold py-2 px-9 rounded mb-2' onClick={submitHandler} >
                     Login

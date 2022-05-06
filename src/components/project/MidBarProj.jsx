@@ -1,22 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Chart from './Chart';
+import Chart from '../Chart';
 import ProjectTable from './ProjectTable';
-import VChart from './VChart';
 
-function MidBar({project}) {
+function MidBarProj({project, projects}) {
 
     const user_role = useSelector((state) => state.data.datas.role);
 
     const allProject = project?.length;
     const compProject = project?.filter(item => item.end !== null).length;
 
+    const [filter, setFilter] = useState(projects.length === 0 ? "With Your ID" : "ALL");
+
+    function handleChoose(e) {
+        setFilter(e.target.value);
+    }
+
     return (
         <React.Fragment>
             {!project ? (
-                <div className='grid grid-cols-3 lg:grid-cols-12 gap-1 lg:gap-4 m-4'>
-                    <div className='col-span-3 lg:col-span-3'>
+                <div className='grid grid-cols-3 lg:grid-cols-12 gap-1 lg:gap-4 m-4 shadow p-1 rounded-lg'>
+                    <div className='col-span-3 lg:col-span-3 shadow p-1 rounded-lg'>
                         <Chart complete={compProject} ongoing={allProject-compProject} />
                     </div>
                     <div className='col-span-1 lg:col-span-3 text-center mt-6 flex flex-col items-center'>
@@ -36,7 +41,7 @@ function MidBar({project}) {
                     </div>
                 </div>
             ) : (
-                <div className='grid grid-cols-3 lg:grid-cols-12 gap-1 lg:gap-4 m-4'>
+                <div className='grid grid-cols-3 lg:grid-cols-12 gap-1 lg:gap-4 m-4 shadow p-1 rounded-lg'>
                     <div className='col-span-3 lg:col-span-3'>
                         <Chart complete={compProject} ongoing={allProject-compProject} />
                     </div>
@@ -65,8 +70,15 @@ function MidBar({project}) {
                             </Link>
                         </div>
                     ) : (null)}
+                    {user_role === "admin" ? (
+                        <select className='col-span-3 lg:col-span-12 mt-4 bg-slate-300 w-1/4 border border-black' name='group' id='group' onChange={handleChoose}>
+                            <option>ALL</option>
+                            <option>With Your ID</option>
+                        </select>
+                    ) : null}
+
                     <div className='col-span-1 lg:col-span-12 text-left mb-8 mx-3 lg:mx-0'>
-                        <ProjectTable project={project} user_role={user_role} />
+                        <ProjectTable project={filter === "ALL" ? projects : project} user_role={user_role} />
                     </div>
                 </div>
             )}
@@ -74,4 +86,4 @@ function MidBar({project}) {
     )
 }
 
-export default MidBar;
+export default MidBarProj;
