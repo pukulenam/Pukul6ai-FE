@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Footer from '../components/Footer';
 import LeftBar from '../components/LeftBar';
-import MidBarProj from '../components/MidBarProj';
+import MidBarProj from '../components/project/MidBarProj';
 import RightBar from '../components/RightBar';
 import SessionAlert from '../components/SessionAlert';
 
@@ -15,6 +15,7 @@ function Project() {
     const [user, setUser] = useState();
     const [project, setProject] = useState();
     const [loading, setLoading] = useState(true);
+    const [projects, setProjects] = useState([]);
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/user/${userid}`, {headers: {"Authorization" : `Bearer ${sessionStorage.getItem('token')}`}})
@@ -29,13 +30,18 @@ function Project() {
         axios.get(`http://localhost:8000/api/project/${user_role}/${userid}`, {headers: {"Authorization" : `Bearer ${sessionStorage.getItem('token')}`}})
         .then(res => {
             setProject(res.data);
-            setLoading(false);
         })
         .catch(err => {
             console.log(err);
             sessionStorage.clear();
         });
 
+        axios.get(`http://localhost:8000/api/project`, {headers: {"Authorization" : `Bearer ${sessionStorage.getItem('token')}`}})
+        .then(res => {
+            setProjects(res.data);
+            setLoading(false);
+        })
+        .catch(err => {console.log(); setLoading(false);});
     }, [])
 
     return (
@@ -59,7 +65,7 @@ function Project() {
                                 <LeftBar user={user} />
                             </div>
                             <div className='col-span-1 lg:col-span-7 bg-slate-100'>
-                                <MidBarProj project={project} />
+                                <MidBarProj project={project} projects={[]} />
                             </div>
                             <div className='col-span-1 lg:col-span-2 text-left pl-4 pr-3 border-l-2 border-black lg:bg-slate-700'>
                                 <RightBar user={user} />
@@ -75,7 +81,7 @@ function Project() {
                             <LeftBar user={user} />
                         </div>
                         <div className='col-span-1 lg:col-span-7 bg-slate-100'>
-                            <MidBarProj project={project} />
+                            <MidBarProj project={project} projects={projects} />
                         </div>
                         <div className='col-span-1 lg:col-span-2 text-left pl-4 pr-3 border-l-2 border-black lg:bg-slate-700'>
                             <RightBar user={user} />

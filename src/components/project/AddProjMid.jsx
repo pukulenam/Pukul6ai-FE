@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function AddProjMid({users}) {
 
@@ -111,8 +111,13 @@ function AddProjMid({users}) {
                         null
                     )}
                 </div>
-
-                <button className="my-4 mx-auto rounded-lg p-3 bg-black border border-white" onClick={submitHandler}>Add Project</button>
+                
+                <div className="flex items-center mx-auto">
+                    <button className="my-4 mx-2 rounded-lg p-3 bg-black border border-white" onClick={submitHandler}>Add Project</button>
+                    <Link to={`/project`}>
+                        <button className="my-4 rounded-lg p-3 bg-red-700 border border-white">Back to Project</button>
+                    </Link>
+                </div>
             </div>
         </div>
     )

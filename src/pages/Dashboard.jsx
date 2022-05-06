@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import Footer from '../components/Footer';
 import LeftBar from '../components/LeftBar';
 import MidBarDash from '../components/MidBarDash';
-import ProjectTable from '../components/ProjectTable';
 import RightBar from '../components/RightBar';
 import SessionAlert from '../components/SessionAlert';
 

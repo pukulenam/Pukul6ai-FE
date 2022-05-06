@@ -23,6 +23,11 @@ function Navbar() {
                                 </a>
                             </li>
                             <li className='rounded'>
+                                <Link to={`/login`} className="no-underline hover:bg-yellow-400 active:bg-red-400">
+                                    <a className='no-underline text-white'>Login</a>
+                                </Link>
+                            </li>
+                            <li className='rounded'>
                                 <Link to={`#`} className="no-underline hover:bg-yellow-400 active:bg-red-400">
                                     <a className='no-underline text-white'>About</a>
                                 </Link>
@@ -62,29 +67,17 @@ function Navbar() {
                             <li>
                                 <Link to={'/'} className="no-underline">
                                     <img className='h-14' alt="" src={logo} />
-                                </Link>
-                            </li>
-                            <li className='rounded'>
-                                <Link to={`#`} className="no-underline hover:bg-yellow-400 active:bg-red-400 lg:hidden">
-                                    <a className='text-2xl no-underline text-white'>PukulEnam.AI</a>
+                                    <a className='lg:text-2xl text-xl no-underline text-white'>PukulEnam.AI</a>
                                 </Link>
                             </li>
                         </ul>
                     </label>
-                    <div className='lg:hidden justify-center ml-auto'>
-                        <ul className="menu menu-horizontal p-0 my-0 text-md font-semibold">
-                            <li className='rounded'>
-                                <Link to={`#`} className="no-underline hover:bg-yellow-400 active:bg-red-400 hidden lg:content">
-                                    <a className='text-2xl no-underline text-white'>PukulEnam.AI</a>
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
+                   
                     <div className="lg:flex hidden justify-center ml-auto">
                         <ul className="menu menu-horizontal items-center p-0 my-0 text-base font-semibold">
                             <li className='rounded'>
                                 <Link to={`#`} className="no-underline hover:bg-yellow-400 active:bg-red-400">
-                                    <a className='text-2xl no-underline text-white'>PukulEnam.AI</a>
+                                    
                                 </Link>
                             </li>
                             <li className='rounded'>
