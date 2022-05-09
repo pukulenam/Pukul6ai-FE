@@ -79,7 +79,7 @@ function ProjectTable({project, user_role}) {
                         <th className='p-2 bg-blue-800 border-b-2 border-black'>No</th>
                         <th className='bg-blue-800 border-b-2 border-black'>Project</th>
                         <th className='bg-blue-800 border-b-2 border-black'>admin</th>
-                        <th className='bg-blue-800 border-b-2 border-black'>Progress</th>
+                        <th className='bg-blue-800 border-b-2 border-black'>Total Time</th>
                         {user_role === "admin" ? (
                             <th className='bg-blue-800 border-b-2 border-black'></th>
                         ) : null
@@ -97,7 +97,7 @@ function ProjectTable({project, user_role}) {
                             <th className='p-3 bg-orange-300'>{id+1}</th>
                             <td className='bg-orange-300'>{item.name}</td>
                             <td className='bg-orange-300'>{item.adminid}</td>
-                            <td className='bg-orange-300'><VChart progress={item.progress}/></td>
+                            <td className='bg-orange-300'>{item.total_time}</td>
                             {user_role === "admin" ? (
                                 <td className='bg-orange-300 text-center w-24'>
                                     <Link to={`/project/edit/${item.id}`}>

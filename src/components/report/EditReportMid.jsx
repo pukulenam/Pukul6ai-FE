@@ -66,7 +66,7 @@ function EditReportMid({admins, report}) {
             setLoading(false);
         })
         .catch(err => {
-            console.log(err.response.data.errors)
+            console.log(err.response.data)
             setError(err.response.data.errors);
             setLoading(false);
         })
@@ -94,13 +94,13 @@ function EditReportMid({admins, report}) {
 
                 <div className="border bg-black border-black my-2"></div>
 
-                {error.length !== 0 ? (
+                {error?.length !== 0 ? (
                     <div className="bg-red-500 text-center mx-auto p-3 rounded border-2 border-black">
                         <svg xmlns="http://www.w3.org/2000/svg" width="" height="26" fill="currentColor" className="w-auto bg-black rounded-full border-white border hover:bg-red-900 bi bi-x" viewBox="0 0 16 16" onClick={() => setError([])}>
                             <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
                         </svg>
                         <ul>
-                            {error.map((item, id) => (
+                            {error?.map((item, id) => (
                                 <li key={id}>{`${id+1}. ${item}`}</li>
                             ))}
                         </ul>
@@ -127,7 +127,7 @@ function EditReportMid({admins, report}) {
                 <input type="text" className={`w-2/3 rounded h-8 text-black px-2`} name='attachment' id='attachment' onChange={e => setDetails({...details, attachment: e.target.value})} value={details.attachment} />
 
                 <div className="flex items-center mx-auto">
-                    <button className="my-4 mx-2 rounded-lg p-3 bg-black border border-white" onClick={submitHandler}>Add Project</button>
+                    <button className="my-4 mx-2 rounded-lg p-3 bg-black border border-white" onClick={submitHandler}>Edit Report</button>
                     <Link to={`/project/view/${report?.project_id}`}>
                         <button className="my-4 rounded-lg p-3 bg-red-700 border border-white">Back to Project</button>
                     </Link>

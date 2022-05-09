@@ -88,7 +88,7 @@ function LeftBar({user}) {
                     </div>
                 </Link>
                 <Link to={'/schedule'}>
-                    <div className={`flex ${location.pathname === '/schedules' ? `bg-orange-400` : `bg-gray-400`} hover:bg-orange-300 font-semibold rounded-lg border border-white p-3 mt-2 cursor-pointer`}>
+                    <div className={`flex ${location.pathname === '/schedule' ? `bg-orange-400` : `bg-gray-400`} hover:bg-orange-300 font-semibold rounded-lg border border-white p-3 mt-2 cursor-pointer`}>
                         Schedules
                     </div>
                 </Link>
