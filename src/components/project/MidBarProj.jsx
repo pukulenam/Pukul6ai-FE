@@ -11,6 +11,11 @@ function MidBarProj({project, projects}) {
     const allProject = project?.length;
     const compProject = project?.filter(item => item.end !== null).length;
 
+    const allProjects = projects?.length;
+    const compProjects = projects?.filter(item => item.end !== null).length;
+
+    console.log(compProjects)
+
     const [filter, setFilter] = useState(projects.length === 0 ? "With Your ID" : "ALL");
 
     function handleChoose(e) {
@@ -43,19 +48,19 @@ function MidBarProj({project, projects}) {
             ) : (
                 <div className='grid grid-cols-3 lg:grid-cols-12 gap-1 lg:gap-4 m-4 shadow p-1 rounded-lg'>
                     <div className='col-span-3 lg:col-span-3'>
-                        <Chart complete={compProject} ongoing={allProject-compProject} />
+                        <Chart complete={filter === "ALL" ? compProjects : compProject} ongoing={filter === "ALL" ? allProjects-compProjects : allProject-compProject} />
                     </div>
                     <div className='col-span-1 lg:col-span-3 text-center mt-6 flex flex-col items-center'>
                         <a className='font-semibold bg-orange-200 p-3 rounded border-2 border-blue-800 w-full'>Total Project</a>
-                        <a className='bg-gray-300 w-full rounded py-9'>{allProject}</a>
+                        <a className='bg-gray-300 w-full rounded py-9'>{filter === "ALL" ? allProjects : allProject}</a>
                     </div>
                     <div className='col-span-1 lg:col-span-3 text-center mt-6 flex flex-col items-center'>
                         <a className='font-semibold bg-orange-200 p-3 rounded border-2 border-blue-800 w-full'>Done Project</a>
-                        <a className='bg-gray-300 w-full rounded py-9'>{compProject}</a>
+                        <a className='bg-gray-300 w-full rounded py-9'>{filter === "ALL" ? compProjects : compProject}</a>
                     </div>
                     <div className='col-span-1 lg:col-span-3 mt-6 flex flex-col items-center text-center'>
                         <a className='font-semibold bg-orange-200 p-3 rounded border-2 border-blue-800 w-full'>On Going Project</a>
-                        <a className='bg-gray-300 w-full rounded py-9'>{allProject-compProject}</a>
+                        <a className='bg-gray-300 w-full rounded py-9'>{filter === "ALL" ? allProjects-compProjects : allProject-compProject}</a>
                     </div>
                     {user_role === 'admin' ? (
                         <div className='col-span-3 lg:col-span-12 mb-4 mt-4 bg-orange-600 mx-auto p-2 rounded-lg border border-black hover:bg-blue-600'>

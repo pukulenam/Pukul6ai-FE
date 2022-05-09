@@ -25,7 +25,13 @@ function ViewReportMid({report}) {
                     <a className="bg-orange-500 p-2 rounded-lg text-black">{report?.end}</a>
 
                     <label className="font-semibold">Admins</label>
-                    <a className="bg-orange-500 p-2 rounded-lg text-black">{report?.admin}</a>
+                    <a className="bg-orange-500 p-2 rounded-lg text-black">
+                        <ul>
+                            {report?.adminByName?.map((item, id) => (
+                                <li key={id}>{item}</li>
+                            ))}
+                        </ul>
+                    </a>
                     
                     <label className="font-semibold">Attachment</label>
                     <a className="bg-orange-500 p-2 rounded-lg text-black">{report?.attachment}</a>

@@ -23,6 +23,7 @@ function MidBarDash({project}) {
                     <div className='col-span-3 lg:col-span-6 mt-6 text-left bg-orange-300 rounded-lg'>
                         <div className='h-44 bg-gray-600 animate-pulse'></div>
                     </div>
+                    <div className='col-span-3 lg:col-span-12'>Schedules</div>
                 </div>
             ) : (
                 <div className='grid grid-cols-3 lg:grid-cols-12 lg:gap-4 m-4 shadow p-1 rounded-lg'>
@@ -44,6 +45,10 @@ function MidBarDash({project}) {
                                 </Link>
                             </React.Fragment>
                         ) : null}
+                    </div>
+                    <div className='col-span-3 lg:col-span-12'>Schedules</div>
+                    <div className='col-span-3 lg:col-span-12 flex flex-col items-center'>
+                        <div className='text-4xl'>Currently Under Development<div className='animate-pulse bg-yellow-300 border border-black rounded-full mx-auto w-11'>:)</div></div>
                     </div>
                 </div>
             )}

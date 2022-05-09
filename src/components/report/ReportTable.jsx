@@ -79,6 +79,7 @@ function ProjectTable({reports, user_role}) {
                         <th className='p-2 bg-blue-800 border-b-2 border-black'>No</th>
                         <th className='bg-blue-800 border-b-2 border-black'>Report</th>
                         <th className='bg-blue-800 border-b-2 border-black'>Admin</th>
+                        <th className='bg-blue-800 border-b-2 border-black'>Total Time</th>
                         {user_role === "admin" ? (
                             <th className='bg-blue-800 border-b-2 border-black'></th>
                         ) : null
@@ -95,7 +96,16 @@ function ProjectTable({reports, user_role}) {
                         <tr key={id}>
                             <th className='p-3 bg-orange-300'>{id+1}</th>
                             <td className='bg-orange-300'>{item.description}</td>
-                            <td className='bg-orange-300'>{item.admin}</td>
+                            <td className='bg-orange-300'>
+                                <div className="overflow-auto">
+                                    <ul>
+                                        {item.admin.map((item2, id2) => (
+                                            <li key={id2}>{item2}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </td>
+                            <td className='bg-orange-300'>{item.total_time ? item.total_time : "N/A"}</td>
                             {user_role === "admin" ? (
                                 <td className='bg-orange-300 text-center w-24'>
                                     <Link to={`/report/edit/${item.id}`}>

@@ -14,6 +14,7 @@ import ProtectingRouteAdmin from './routes/protectingRouteAdmin';
 import AddReport from './pages/AddReport';
 import ViewReport from './pages/ViewReport';
 import EditReport from './pages/EditReport';
+import Schedules from './pages/Schedule';
 
 function App() {
   
@@ -45,6 +46,7 @@ function App() {
               } />
               <Route path="/report/view/:id" element={<ViewReport />} />
               <Route path="/report/edit/:id" element={<EditReport />} />
+              <Route path="/schedule" element={<Schedules />} />
 
               <Route path="*" element={<div>404 Page Not Found</div>} />
             </Routes>
