@@ -11,16 +11,36 @@ function Schedules() {
 
     const session = sessionStorage.getItem('token');
     const userid = useSelector((state) => state.data.datas.id);
+    const user_role = useSelector((state) => state.data.datas.role);
 
     const [user, setUser] = useState();
+    const [schedules, setSchedules] = useState();
+    const [schedule, setSchedule] = useState();
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-
         axios.get(`http://localhost:8000/api/user/${userid}`, {headers: {"Authorization" : `Bearer ${sessionStorage.getItem('token')}`}})
         .then(res => {
             setUser(res.data);
+        })
+        .catch(err => {
+            console.log(err);
+            sessionStorage.clear();
+        })
+
+        axios.get("http://localhost:8000/api/schedule/", {headers: {"Authorization" : `Bearer ${sessionStorage.getItem('token')}`}})
+        .then(res => {
+            setSchedules(res.data);
+        })
+
+        axios.get(`http://localhost:8000/api/schedule/${user_role}/${userid}`, {headers: {"Authorization" : `Bearer ${sessionStorage.getItem('token')}`}})
+        .then(res => {
+            setSchedule(res.data);
             setLoading(false);
+        })
+        .catch(err => {
+            console.log(err);
+            sessionStorage.clear();
         })
     }, []);
     
@@ -45,7 +65,9 @@ function Schedules() {
                                 <LeftBar user={user} />
                             </div>
                             <div className='col-span-1 lg:col-span-7 bg-slate-100'>
-                                {/* <div className='col-span-1 lg:col-span-12 text-4xl'>Currently Under Development<div className='animate-pulse bg-yellow-300 border border-black rounded-full mx-auto w-11'>:)</div></div> */}
+                                <div className='col-span-1 lg:col-span-12 text-4xl bg-gray-400 animate-pulse h-48'>
+                                    
+                                </div>
                             </div>
                             <div className='col-span-1 lg:col-span-2 text-left pl-4 pr-3 border-l-2 border-black lg:bg-slate-700'>
                                 <RightBar user={user} />
@@ -61,7 +83,7 @@ function Schedules() {
                             <LeftBar user={user} />
                         </div>
                         <div className='col-span-1 lg:col-span-7 bg-slate-100'>
-                            <ScheduleMid />
+                            <ScheduleMid schedule={schedule} schedules={schedules} />
                         </div>
                         <div className='col-span-1 lg:col-span-2 text-left pl-4 pr-3 border-l-2 border-black lg:bg-slate-700'>
                             <RightBar user={user} />

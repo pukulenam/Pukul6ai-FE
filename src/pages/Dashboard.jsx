@@ -14,6 +14,7 @@ function Dashboard() {
 
     const [user, setUser] = useState();
     const [project, setProject] = useState();
+    const [schedule, setSchedule] = useState();
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -29,12 +30,21 @@ function Dashboard() {
         axios.get(`http://localhost:8000/api/project/${user_role}/${userid}`, {headers: {"Authorization" : `Bearer ${sessionStorage.getItem('token')}`}})
         .then(res => {
             setProject(res.data);
-            setLoading(false);
         })
         .catch(err => {
             console.log(err);
             sessionStorage.clear();
         });
+
+        axios.get(`http://localhost:8000/api/schedule/${user_role}/${userid}`, {headers: {"Authorization" : `Bearer ${sessionStorage.getItem('token')}`}})
+        .then(res => {
+            setSchedule(res.data);
+            setLoading(false);
+        })
+        .catch(err => {
+            console.log(err);
+            sessionStorage.clear();
+        })
 
     }, [])
 
@@ -59,7 +69,7 @@ function Dashboard() {
                                 <LeftBar user={user} />
                             </div>
                             <div className='col-span-1 lg:col-span-7 bg-slate-100'>
-                                <MidBarDash project={project} />
+                                <MidBarDash project={project} schedule={schedule} />
                             </div>
                             <div className='col-span-1 lg:col-span-2 text-left pl-4 pr-3 border-l-2 border-black lg:bg-slate-700'>
                                 <RightBar user={user} />
@@ -75,7 +85,7 @@ function Dashboard() {
                             <LeftBar user={user} />
                         </div>
                         <div className='col-span-1 lg:col-span-7 bg-slate-100'>
-                            <MidBarDash project={project} />
+                            <MidBarDash project={project} schedule={schedule} />
                         </div>
                         <div className='col-span-1 lg:col-span-2 text-left pl-4 pr-3 border-l-2 border-black lg:bg-slate-700'>
                             <RightBar user={user} />
