@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Chart from './Chart';
 import ProjectTable from './project/ProjectTable';
+import HistorySchedule from './schedule/HistorySchedule';
 
-function MidBarDash({project}) {
+function MidBarDash({project, schedule}) {
 
     const allProject = project?.length;
     const compProject = project?.filter(item => item.end !== null).length;
@@ -48,7 +49,7 @@ function MidBarDash({project}) {
                     </div>
                     <div className='col-span-3 lg:col-span-12'>Schedules</div>
                     <div className='col-span-3 lg:col-span-12 flex flex-col items-center'>
-                        <div className='text-4xl'>Currently Under Development<div className='animate-pulse bg-yellow-300 border border-black rounded-full mx-auto w-11'>:)</div></div>
+                        <HistorySchedule schedule={schedule} schedules={null} />
                     </div>
                 </div>
             )}
