@@ -17,28 +17,30 @@ function LeftBar({user}) {
 
     return (
         <React.Fragment>
-            <div className='sticky lg:hidden flex z-20 items-center gap-2 border-black text-white bg-slate-800 shadow-lg'>
+            <div className='sticky top-0 lg:hidden flex z-20 items-center gap-2 border-black text-white bg-slate-800 shadow-lg'>
                 <Link to={'/'}>
-                    <div className='p-4 bg-slate-900'>
-                        <a className='font-semibold'>PukulEnam AI</a>
+                    <div className='p-2 bg-slate-900'>
+                        <p className='font-semibold'>PukulEnam AI</p>
                     </div>
                 </Link>
                 <Link to={'/dashboard'}>
-                    <div>
+                    <div className={`text-sm py-3 ${location.pathname === '/dashboard' ? `bg-orange-400` : null}`}>
                         Dashboard
                     </div>
                 </Link>
                 <Link to={'/project'}>
-                    <div>
+                    <div className='text-sm active:bg-orange-500 py-1'>
                         Project
                     </div>
                 </Link>
-                <div>
-                    schedule
-                </div>
-                <div className='bg-blue-700 p-1 rounded-lg' onClick={() => setClick(!click)}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="" height="24" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                <Link to={'/schedule'}>
+                    <div className='text-sm active:bg-orange-500 py-1'>
+                        schedule
+                    </div>
+                </Link>
+                <div className='bg-blue-700 p-1 rounded-lg right-0 absolute' onClick={() => setClick(!click)}>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" fill="currentColor" className="bi bi-list" viewBox="0 0 16 16">
+                        <path fillRule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
                     </svg>
                 </div>
             </div>
@@ -69,11 +71,11 @@ function LeftBar({user}) {
                     </div>
                 </div>
             ) : null}
-            <div className='sticky hidden left-0 z-20 lg:flex flex-col p-4 text-white text-left'>
+            <div className='sticky hidden left-0 top-0 z-20 lg:flex flex-col p-4 text-white text-left'>
                 <Link to={'/'}>
                     <div className='flex items-center w-full bg-red-500 rounded-lg p-4 border border-white'>
                         <img className='h-14 rounded-full mr-4 w-auto border' alt='' src={p6logo} />
-                        <a className='font-bold text-2xl'>PukulEnam AI</a>
+                        <p className='font-bold text-2xl'>PukulEnam AI</p>
                     </div>
                 </Link>
                 <div className='border border-white bg-white mt-7 mb-6'></div>

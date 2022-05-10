@@ -21,7 +21,6 @@ function Login() {
 
     return (
         <div className='bg-orange-200 text-black grid grid-cols-1 lg:grid-cols-12'>
-            {console.log(cond)}
             <div className='col-span-1 lg:col-span-12 my-14 mx-16 bg-white grid grid-cols-1 lg:grid-cols-12 shadow-lg rounded-lg'>
                 <div className='col-span-1 lg:col-span-6'>
                     <LoginCover />
