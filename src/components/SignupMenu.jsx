@@ -15,11 +15,8 @@ function SignupMenu({choose}) {
 
     function submitHandler() {
         setLoading(true);
-        console.log(loading);
         axios.post("http://localhost:8000/api/register", details)
         .then(res => {
-            console.log(res.data);
-            console.log(res.data.token);
             dispatch(ADD_USER(res.data.user));
             sessionStorage.setItem("token", res.data.token );
             setLoading(false);
@@ -30,21 +27,20 @@ function SignupMenu({choose}) {
             console.log(err.response.data);
             setLoading(false);
         })
-        console.log(loading);
     }
 
     return (
         <React.Fragment>
             <div className='relative p-4 lg:pt-8 lg:px-28 rounded flex-col flex items-center'>
                 {/* <svg xmlns="http://www.w3.org/2000/svg" width="auto" height="48" fill="currentColor" className="mb-24 bi-arrow-left hover:bg-red-300" viewBox="0 0 16 16" onClick={() => choose('none')}>
-                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                    <path fillRule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
                 </svg>
                  */}
 
                 {loading ? (
                     <div className='absolute flex flex-col items-center bg-blue-200 border-blue-500 border-2 rounded-lg p-2 w-3/4 mt-10'>
                         <svg className='animate-spin text-white w-auto h-11' xmlns='http://www.w3.org/2000/svg' fill="none" viewBox='0 0 24 24'>
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
                         Processing...

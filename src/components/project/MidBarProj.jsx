@@ -14,8 +14,6 @@ function MidBarProj({project, projects}) {
     const allProjects = projects?.length;
     const compProjects = projects?.filter(item => item.end !== null).length;
 
-    console.log(compProjects)
-
     const [filter, setFilter] = useState(projects.length === 0 ? "With Your ID" : "ALL");
 
     function handleChoose(e) {

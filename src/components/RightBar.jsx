@@ -11,9 +11,9 @@ function RightBar({user}) {
     }
 
     return (
-        <div className='hidden lg:flex flex-col text-white'>
+        <div className='hidden lg:block sticky top-0 right-0 flex-col text-white'>
             {user ? (
-                <div className='avatar placeholder flex items-center mt-4 p-3 rounded-lg bg-blue-500'>
+                <div className='avatar placeholder flex items-center p-3 rounded-lg bg-blue-500 mt-5'>
                     <div className='bg-black rounded-full w-10 text-white'>
                         <span className='text-2xl'>A</span>
                     </div>

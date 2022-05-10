@@ -96,7 +96,7 @@ function EditProjMid({users, project}) {
                     <div className="modal modal-open modal-top">
                         <div className="modal-box text-left bg-indigo-800 text-white flex items-center">
                             <svg className='animate-spin text-white w-auto h-11 mr-4' xmlns='http://www.w3.org/2000/svg' fill="none" viewBox='0 0 24 24'>
-                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                             </svg>
                             <h3 className="font-bold text-lg">Adding...</h3>
@@ -159,10 +159,7 @@ function EditProjMid({users, project}) {
                         null
                     )}
                 </div>
-                
-                <label className="font-semibold">Progress</label>
-                <input type='text' autoComplete="off" className={`w-2/3 rounded h-8 text-black px-2`} name='progress' id='progress' onChange={e => setDetails({...details, progress: e.target.value})} value={details.progress} />
-                
+                   
                 <label className="font-semibold">Start Date</label>
                 <input type="datetime-local" className={`w-2/3 rounded h-8 text-black px-2`} name='start' id='start' onChange={e => setDetails({...details, start: datetimeToStr(e.target.value)})} value={strToDatetime(details.start)} />
 
